@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Workout - FitTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="workout.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <a href="index.html" class="back-btn">← Back</a>
+            <div class="header-content">
+                <h1>Start Training</h1>
+                <div class="workout-info">
+                    <h2 id="currentDay">Monday</h2>
+                    <p id="currentDateTime">Loading date and time...</p>
+                </div>
+            </div>
+           <!-- Add this after the date/time and before the progress section -->
+<div class="workout-reminder">
+    <div class="reminder-icon">
+        <i class="fas fa-user"></i>
+        <img id="workoutUserAvatar" alt="User Avatar" style="display: none;">
+    </div>
+    <div class="reminder-text">
+        <strong id="userWorkoutReminder">Ready for your workout!</strong>
+        <span>Remember to do proper warmups and take 60-90 sec rest between sets</span>
+    </div>
+</div>
+        </header>
+
+        <main class="workout-main-content">
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <h3 class="section-title">Workout Progress</h3>
+                <div class="progress-container">
+                    <div class="flame-progress-bar">
+                        <div class="flame-progress-fill" id="progressFill"></div>
+                        <div class="flame-animation"></div>
+                        <div class="smooth-flow-animation" id="smoothFlow"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <span id="completedWorkouts">0</span> / <span id="totalWorkouts">0</span> workouts completed
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Workout Section -->
+            <div class="current-workout-section">
+                <h3 class="section-title" id="workoutSubtitle">Start Workout</h3>
+                
+                <div id="workoutStart" class="workout-start">
+                    <button id="startWorkoutBtn" class="start-workout-btn">
+                        <i class="fas fa-play-circle"></i>
+                        Start Workout
+                    </button>
+                </div>
+
+                <div id="currentExercise" class="current-exercise hidden">
+                    <div class="exercise-header">
+                        <h2 id="exerciseName">Exercise Name</h2>
+                        <div class="exercise-sets">
+                            Set <span id="currentSet">1</span> of <span id="totalSets">3</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-details">
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div class="detail-content">
+                                <div class="detail-label">Sets</div>
+                                <div class="detail-value" id="detailSets">3</div>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="detail-content">
+                                <div class="detail-label" id="targetLabel">Target Reps</div>
+                                <div class="detail-value" id="detailTarget">10</div>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="detail-content">
+                                <div class="detail-label">Type</div>
+                                <div class="detail-value" id="detailType">Reps</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timer for Time-based exercises -->
+                    <div id="timerSection" class="timer-section hidden">
+                        <div class="timer-display">
+                            <span id="timerValue">60</span>s
+                        </div>
+                        <div class="timer-progress">
+                            <div class="timer-progress-fill" id="timerProgress"></div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="action-section">
+                        <button id="actionBtn" class="action-btn">
+                            <i class="fas fa-check"></i>
+                            <span id="actionText">Set 1 Completed</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Workout Complete Section -->
+<div id="workoutComplete" class="workout-complete hidden">
+    <div class="completion-animation">
+        <i class="fas fa-fire" id="fireIcon"></i>
+    </div>
+    <h2>Workout Complete! 🔥</h2>
+    <p>Great job! You've completed all exercises for today.</p>
+    <button id="finishWorkoutBtn" class="finish-workout-btn">
+        <i class="fas fa-fire"></i>
+        Finish & Celebrate!
+    </button>
+</div>
+
+            <!-- Today's Workout Plan -->
+            <div class="workout-plan-section">
+                <h3 class="section-title">Today's Workout Plan</h3>
+                <div id="todaysWorkoutPlan" class="todays-workout-plan">
+                    <!-- Today's workout plan will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="theme.js"></script>
+    <script src="workout.js"></script>
+</body>
+</html>

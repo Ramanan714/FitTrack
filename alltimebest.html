@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-Time Best - FitTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="alltimebest.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <a href="index.html" class="back-btn">← Back</a>
+            <div class="header-content">
+                <h1>All-Time Best</h1>
+                <p>Your personal fitness records</p>
+            </div>
+        </header>
+
+        <main class="alltime-main-content">
+            <!-- Records Summary -->
+            <div class="records-summary">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>Personal Bests</h3>
+                        <p>Track your highest achievements</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Record Button and Sort Options -->
+            <div class="records-controls">
+                <div class="add-record-section">
+                    <button id="addRecordBtn" class="add-record-btn">
+                        <i class="fas fa-plus"></i>
+                        Add New Record
+                    </button>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="sort-section">
+                    <label for="sortSelect" class="sort-label">
+                        <i class="fas fa-sort"></i>
+                        Sort by:
+                    </label>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="name-asc">Name A-Z</option>
+                        <option value="name-desc">Name Z-A</option>
+                        <option value="time-desc">Value High to Low</option>
+                        <option value="time-asc">Value Low to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Records List -->
+            <div class="records-section">
+                <h2 class="section-title">Exercise Records</h2>
+                <div id="recordsList" class="records-list">
+                    <!-- Records will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Record Modal -->
+    <div id="recordModal" class="modal">
+        <div class="modal-content premium-modal">
+            <div class="modal-header premium-header">
+                <h2 id="modalTitle">🏆 Add New Record</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="recordForm" class="premium-form">
+                    <!-- Exercise Name -->
+                    <div class="form-group premium-group">
+                        <label class="premium-label">
+                            <i class="fas fa-dumbbell"></i>
+                            Exercise Name
+                        </label>
+                        <input type="text" id="exerciseName" class="premium-input" 
+                               placeholder="Enter exercise name (e.g., Bench Press, Squats)" required>
+                    </div>
+
+                    <!-- Record Type Selection -->
+                    <div class="form-group premium-group">
+                        <label class="premium-label">
+                            <i class="fas fa-chart-line"></i>
+                            Record Type
+                        </label>
+                        <div class="premium-options">
+                            <label class="premium-option">
+                                <input type="radio" name="recordType" value="weight" checked>
+                                <div class="option-card">
+                                    <div class="option-icon">
+                                        <i class="fas fa-weight-hanging"></i>
+                                    </div>
+                                    <div class="option-content">
+                                        <div class="option-title">Max Weight</div>
+                                        <div class="option-desc">Heaviest lift achieved</div>
+                                    </div>
+                                    <div class="option-check">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="premium-option">
+                                <input type="radio" name="recordType" value="reps">
+                                <div class="option-card">
+                                    <div class="option-icon">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <div class="option-content">
+                                        <div class="option-title">Max Score</div>
+                                        <div class="option-desc">Highest score achieved</div>
+                                    </div>
+                                    <div class="option-check">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="premium-option">
+                                <input type="radio" name="recordType" value="time">
+                                <div class="option-card">
+                                    <div class="option-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="option-content">
+                                        <div class="option-title">Best Time</div>
+                                        <div class="option-desc">Fastest completion time</div>
+                                    </div>
+                                    <div class="option-check">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Value Input -->
+                    <div class="form-group premium-group">
+                        <label class="premium-label" id="valueLabel">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Weight (kg)
+                        </label>
+                        <input type="number" id="recordValue" class="premium-input" 
+                               step="0.1" min="0" placeholder="Enter your record value" required>
+                    </div>
+
+                    <!-- Sets Input (Visible only for reps and time) -->
+                    <div id="setsSection" class="form-group premium-group hidden">
+                        <label class="premium-label">
+                            <i class="fas fa-layer-group"></i>
+                            Sets Completed
+                        </label>
+                        <input type="number" id="recordSets" class="premium-input" 
+                               min="1" max="10" placeholder="Number of sets" value="1">
+                    </div>
+
+                    <!-- Date Achieved -->
+                    <div class="form-group premium-group">
+                        <label class="premium-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            Select Date
+                        </label>
+                        <div class="alternative-date-inputs">
+                            <div class="date-input-row">
+                                <select id="dateDay" class="date-select">
+                                    <option value="">Day</option>
+                                    <!-- Days will be populated dynamically based on month selection -->
+                                </select>
+                                <select id="dateMonth" class="date-select">
+                                    <option value="">Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select id="dateYear" class="date-select">
+                                    <option value="">Year</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                    <option value="2031">2031</option>
+                                    <option value="2032">2032</option>
+                                    <option value="2033">2033</option>
+                                    <option value="2034">2034</option>
+                                    <option value="2035">2035</option>
+                                    <option value="2036">2036</option>
+                                    <option value="2037">2037</option>
+                                    <option value="2038">2038</option>
+                                    <option value="2039">2039</option>
+                                    <option value="2040">2040</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="form-group premium-group">
+                        <label class="premium-label">
+                            <i class="fas fa-sticky-note"></i>
+                            Notes & Description
+                        </label>
+                        <textarea id="recordNotes" class="premium-textarea" 
+                                  placeholder="Add details about your achievement (e.g., equipment used, how you felt, special conditions)..."
+                                  rows="4"></textarea>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="premium-actions">
+                        <button type="button" id="resetBtn" class="btn btn-secondary premium-btn">
+                            <i class="fas fa-redo"></i>
+                            Reset Form
+                        </button>
+                        <button type="button" id="cancelBtn" class="btn btn-secondary premium-btn">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button type="submit" id="saveRecordBtn" class="btn btn-primary premium-btn">
+                            <i class="fas fa-save"></i>
+                            Save Record
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Confetti Animation Container -->
+    <div id="confettiContainer" class="confetti-container"></div>
+    <script src="storage.js"></script>
+    <script src="theme.js"></script>
+    <script src="alltimebest.js"></script>
+</body>
+</html>

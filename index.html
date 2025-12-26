@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Workout Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>FitTrack</span>
+                </div>
+                <button class="icon-btn" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+
+            <!-- Welcome Section -->
+<div class="welcome-card">
+    <div class="welcome-avatar">
+        <div class="avatar-fallback" id="avatarFallback">
+            <i class="fas fa-user"></i>
+        </div>
+        <img id="userAvatarImage" alt="User Avatar" style="display: none;">
+    </div>
+    <div class="welcome-text">
+        <h2 id="welcomeMessage">Welcome back!</h2>
+        <p id="currentDate" class="date-text">Loading date...</p>
+    </div>
+</div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Navigation Cards -->
+            <div class="nav-section">
+                <a href="workout.html" class="nav-card">
+                    <div class="nav-icon primary">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="nav-text">
+                        <h3>Start Workout</h3>
+                        <p>Begin training session</p>
+                    </div>
+                    <i class="fas fa-chevron-right nav-arrow"></i>
+                </a>
+
+                <a href="progress.html" class="nav-card">
+                    <div class="nav-icon success">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="nav-text">
+                        <h3>Progress</h3>
+                        <p>View your journey</p>
+                    </div>
+                    <i class="fas fa-chevron-right nav-arrow"></i>
+                </a>
+
+                <a href="plans.html" class="nav-card">
+                    <div class="nav-icon warning">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="nav-text">
+                        <h3>Workout Plans</h3>
+                        <p>Manage routines</p>
+                    </div>
+                    <i class="fas fa-chevron-right nav-arrow"></i>
+                </a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-section">
+                <h2 class="section-title">Your Progress</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon fire">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="dayStreak">0</span>
+                            <span class="stat-label">Day Streak</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon dumbell">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalWorkouts">0</span>
+                            <span class="stat-label">Total Workouts</span>
+                        </div>
+                    </div>
+
+                    <a href="nextday.html" class="stat-card next-day">
+                        <div class="stat-icon calendar">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-plan" id="nextPlan">Rest Day</span>
+                            <span class="stat-label">Next Session</span>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="actions-section">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" id="quickStartBtn">
+                        <i class="fas fa-bolt"></i>
+                        <span>Quick Start</span>
+                    </button>
+                    <button class="action-btn" id="addPlanBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>New Plan</span>
+                    </button>
+                    <button class="action-btn" id="viewProgressBtn">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Progress</span>
+                    </button>
+                </div>
+            </div>
+            <!-- All-Time Best Section -->
+<div class="alltimebest-section">
+    <h2 class="section-title">My Records</h2>
+    <a href="alltimebest.html" class="alltimebest-card">
+        <div class="alltimebest-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <div class="alltimebest-text">
+            <h3>All-Time Best</h3>
+            <p>View your personal records</p>
+        </div>
+        <i class="fas fa-chevron-right nav-arrow"></i>
+    </a>
+</div>
+
+            <!-- Recent Activity -->
+            <div class="activity-section">
+                <h2 class="section-title">Recent Activity</h2>
+                <div id="recentWorkouts" class="activity-list">
+                    <div class="empty-state">
+                        <i class="fas fa-dumbbell"></i>
+                        <p>No workouts yet</p>
+                        <small>Start your first workout!</small>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+<div id="settingsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Settings</h3>
+            <button class="close-btn" id="closeSettings">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <!-- Profile Navigation Button -->
+            <!-- Profile Navigation Button in Settings - Modified to show image and name if logged in -->
+<div class="setting-group">
+    <h4>Account</h4>
+    <a href="profile.html" class="profile-nav-btn">
+        <div class="profile-nav-content">
+            <div class="profile-nav-icon" id="settingsAvatarIcon">
+                <i class="fas fa-user-circle"></i>
+                <img id="settingsAvatarImage" alt="User Avatar" style="display: none;">
+            </div>
+            <div class="profile-nav-info">
+                <div class="profile-nav-name" id="settingsUserName">Set up your profile</div>
+                <div class="profile-nav-desc" id="settingsUserDesc">Customize name, photo & notifications</div>
+            </div>
+            <div class="profile-nav-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </a>
+</div>
+            <div class="setting-group">
+                <h4>Appearance</h4>
+                <div class="theme-options">
+                    <label class="theme-option">
+                        <input type="radio" name="theme" value="auto" checked>
+                        <span class="theme-checkmark"></span>
+                        <span class="theme-label">
+                            <i class="fas fa-adjust"></i>
+                            System Default
+                        </span>
+                    </label>
+                    <label class="theme-option">
+                        <input type="radio" name="theme" value="light">
+                        <span class="theme-checkmark"></span>
+                        <span class="theme-label">
+                            <i class="fas fa-sun"></i>
+                            Light Mode
+                        </span>
+                    </label>
+                    <label class="theme-option">
+                        <input type="radio" name="theme" value="dark">
+                        <span class="theme-checkmark"></span>
+                        <span class="theme-label">
+                            <i class="fas fa-moon"></i>
+                            Dark Mode
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h4>Data Management</h4>
+                <div class="reset-actions">
+                    <button class="btn btn-danger" id="resetData">
+                        <i class="fas fa-trash-alt"></i>
+                        Reset All Data
+                    </button>
+                    <p class="reset-warning">This will delete all workouts, plans, and records.</p>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+    <script src="storage.js"></script>
+    <script src="theme.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1468 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light Theme */
+    --primary-color: #007bff;
+    --primary-light: #e3f2fd;
+    --success-color: #28a745;
+    --success-light: #e8f5e8;
+    --warning-color: #ffc107;
+    --warning-light: #fff8e1;
+    --danger-color: #dc3545;
+    --danger-light: #ffeaea;
+    
+    --bg-color: #ffffff;
+    --surface-color: #f8f9fa;
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
+    --border-color: #e9ecef;
+    --shadow: 0 2px 12px rgba(0,0,0,0.1);
+    --shadow-hover: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+[data-theme="dark"] {
+    --primary-color: #4dabf7;
+    --primary-light: #1a365d;
+    --success-color: #51cf66;
+    --success-light: #1c3a2d;
+    --warning-color: #ffd43b;
+    --warning-light: #3a3200;
+    --danger-color: #ff6b6b;
+    --danger-light: #3d1a1a;
+    
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #333333;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    --shadow-hover: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+.app-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 16px 32px;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.app-header {
+    padding: 20px 0;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo i {
+    font-size: 1.8rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-color);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Welcome Card */
+.welcome-card {
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.welcome-text h2 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+.date-text {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Navigation Cards */
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.nav-card {
+    display: flex;
+    align-items: center;
+    background: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.nav-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.nav-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.nav-icon.primary { background: var(--primary-color); }
+.nav-icon.success { background: var(--success-color); }
+.nav-icon.warning { background: var(--warning-color); }
+
+.nav-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.nav-text p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.nav-arrow {
+    margin-left: auto;
+    color: var(--text-secondary);
+}
+
+/* Stats Section */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-card.next-day {
+    grid-column: 1 / -1;
+}
+
+.stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.stat-icon.fire { background: var(--danger-color); }
+.stat-icon.dumbell { background: var(--primary-color); }
+.stat-icon.calendar { background: var(--success-color); }
+.stat-icon.clock { background: var(--warning-color); }
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-plan {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--success-color);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Quick Actions */
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.action-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.action-btn i {
+    font-size: 1.3rem;
+}
+
+.action-btn span {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Activity Section */
+.activity-list {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.empty-state small {
+    font-size: 0.8rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--bg-color);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-hover);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 4px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.setting-group {
+    margin-bottom: 20px;
+}
+
+.setting-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.setting-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-color);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--surface-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 0 12px 24px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .actions-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .action-btn {
+        padding: 12px 6px;
+    }
+    
+    .action-btn span {
+        font-size: 0.75rem;
+    }
+}
+/* Remove theme select from header */
+.theme-select {
+    display: none;
+}
+
+/* Stats grid - fixed 3 cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stat-card.next-day {
+    grid-column: 1 / -1;
+}
+
+/* Theme options in settings */
+.setting-group h4 {
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.theme-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--surface-color);
+}
+
+.theme-option:hover {
+    border-color: var(--primary-color);
+}
+
+.theme-option input[type="radio"] {
+    display: none;
+}
+
+.theme-checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    margin-right: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.theme-option input[type="radio"]:checked + .theme-checkmark {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+}
+
+.theme-option input[type="radio"]:checked + .theme-checkmark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+.theme-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.theme-label i {
+    width: 16px;
+    text-align: center;
+}
+
+/* Ensure permanent alignment */
+.nav-section,
+.stats-section,
+.actions-section,
+.activity-section {
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+/* Fixed stats card sizes */
+.stat-card {
+    background: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    min-height: 80px;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+/* Today's Workout Status Box */
+.today-workout-status {
+    margin: 20px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+}
+
+.status-content.completed {
+    background: linear-gradient(135deg, var(--success-color), #28a745);
+    color: white;
+}
+
+.status-content.pending {
+    background: linear-gradient(135deg, var(--warning-color), #ffc107);
+    color: white;
+}
+
+.status-content.rest-day {
+    background: linear-gradient(135deg, var(--primary-color), #007bff);
+    color: white;
+}
+
+.status-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.status-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+    .status-content {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .status-icon {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+/* Today's Workout Status Box */
+.today-workout-status {
+    display: block;
+    margin: 20px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+}
+
+.status-content.completed {
+    background: linear-gradient(135deg, var(--success-color), #28a745);
+    color: white;
+}
+
+.status-content.pending {
+    background: linear-gradient(135deg, var(--warning-color), #ffc107);
+    color: white;
+}
+
+.status-content.rest-day {
+    background: linear-gradient(135deg, var(--primary-color), #007bff);
+    color: white;
+}
+
+.status-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.status-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* Make sure it appears between welcome card and navigation */
+.app-header + .today-workout-status {
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 480px) {
+    .status-content {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .status-icon {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .status-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .status-text p {
+        font-size: 0.9rem;
+    }
+}
+/* All-Time Best Section */
+.alltimebest-section {
+    margin-bottom: 24px;
+}
+
+.alltimebest-card {
+    display: flex;
+    align-items: center;
+    background: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.alltimebest-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--warning-color);
+}
+
+.alltimebest-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 1.2rem;
+    color: white;
+    background: var(--warning-color);
+}
+
+.alltimebest-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.alltimebest-text p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.alltimebest-card .nav-arrow {
+    margin-left: auto;
+    color: var(--text-secondary);
+}
+/* Profile Navigation Button in Settings */
+.profile-nav-btn {
+    display: block;
+    text-decoration: none;
+    background: var(--surface-color);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.profile-nav-btn:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.profile-nav-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-nav-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.profile-nav-info {
+    flex: 1;
+}
+
+.profile-nav-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.profile-nav-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+.profile-nav-arrow {
+    color: var(--text-secondary);
+}
+
+/* Reset Data Button Styling */
+.reset-actions {
+    text-align: center;
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.reset-warning {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    text-align: center;
+}
+/* Welcome Avatar Styles */
+.welcome-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.welcome-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.welcome-card {
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.welcome-text {
+    flex: 1;
+}
+
+/* Settings Avatar Styles */
+.profile-nav-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-nav-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+/* Recent Activity - Remove time from empty state */
+.activity-item .activity-details {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* In activity section, modify to show only date */
+.activity-item .activity-details {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+/* ==================== */
+/* PREMIUM ANIMATIONS   */
+/* ==================== */
+
+/* Slide In Left Animation for Page Load */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Electric Blue Surge - REMOVED THE INITIAL FLASH */
+@keyframes electricSurge {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Blue Energy Pulse - REMOVED THE BLUE FLASH */
+@keyframes bluePulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(64, 156, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(64, 156, 255, 0.3);
+    }
+}
+
+/* Heading Glow */
+@keyframes headingGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(64, 156, 255, 0);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(64, 156, 255, 0.6);
+    }
+}
+
+/* Card Slide In */
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== */
+/* WELCOME CARD STYLES - FIXED */
+/* ==================== */
+
+.welcome-card {
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--shadow);
+    animation: slideInLeft 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Avatar image styles */
+#userAvatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* Hidden by default, shown when image exists */
+}
+
+/* Avatar fallback when no image */
+.avatar-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.5rem;
+}
+
+.welcome-text {
+    flex: 1;
+}
+
+.welcome-text h2 {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.date-text {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* ==================== */
+/* PAGE LOAD ANIMATIONS - SIMPLIFIED */
+/* ==================== */
+
+.app-container {
+    animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Section titles with subtle glow */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    animation: slideInLeft 0.6s ease-out;
+}
+
+/* ==================== */
+/* NAVIGATION CARDS ANIMATIONS */
+/* ==================== */
+
+.nav-card {
+    display: flex;
+    align-items: center;
+    background: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+    opacity: 0;
+}
+
+.nav-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+/* Stagger navigation card animations */
+.nav-card:nth-child(1) { animation-delay: 0.1s; }
+.nav-card:nth-child(2) { animation-delay: 0.2s; }
+.nav-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ==================== */
+/* STATS GRID ANIMATIONS */
+/* ==================== */
+
+.stat-card {
+    background: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    min-height: 80px;
+    animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+}
+
+/* Stagger stats card animations */
+.stat-card:nth-child(1) { animation-delay: 0.2s; }
+.stat-card:nth-child(2) { animation-delay: 0.3s; }
+.stat-card:nth-child(3) { animation-delay: 0.4s; }
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ==================== */
+/* QUICK ACTIONS ANIMATIONS */
+/* ==================== */
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+    animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+}
+
+/* Stagger action button animations */
+.action-btn:nth-child(1) { animation-delay: 0.3s; }
+.action-btn:nth-child(2) { animation-delay: 0.4s; }
+.action-btn:nth-child(3) { animation-delay: 0.5s; }
+
+.action-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ==================== */
+/* ALL-TIME BEST ANIMATIONS */
+/* ==================== */
+
+.alltimebest-card {
+    display: flex;
+    align-items: center;
+    background: var(--surface-color);
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+}
+
+.alltimebest-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--warning-color);
+}
+
+/* ==================== */
+/* ACTIVITY SECTION ANIMATIONS */
+/* ==================== */
+
+.activity-list {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.7s both;
+}
+
+/* ==================== */
+/* TODAY'S WORKOUT STATUS ANIMATION */
+/* ==================== */
+
+.today-workout-status {
+    display: block;
+    margin: 20px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    animation: cardSlideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+}
+
+/* ==================== */
+/* REMOVE ALL BLUE FLASH ANIMATIONS */
+/* ==================== */
+
+/* Remove these animations completely */
+.electric-flash-overlay,
+.welcome-card::before,
+.welcome-card::after {
+    display: none !important;
+    animation: none !important;
+}
+
+/* ==================== */
+/* RESPONSIVE ANIMATIONS */
+/* ==================== */
+
+@media (max-width: 480px) {
+    .app-container {
+        animation-duration: 0.6s;
+    }
+    
+    .welcome-avatar {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .welcome-text h2 {
+        font-size: 1.2rem;
+    }
+}
+/* ==================== */
+/* HERO ENTRY ANIMATION SET */
+/* ==================== */
+
+/* 1. Hero Card Slide-In with Scale */
+@keyframes heroCardSlideIn {
+    0% {
+        opacity: 1;
+        transform: translateY(50px) scale(0.9);
+    }
+    70% {
+        transform: translateY(-10px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 2. Staggered Card Cascade */
+@keyframes cardCascade {
+    0% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Subtle Icon Float */
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 4. Background Gradient Shift */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 5. Micro-Interaction Hovers */
+@keyframes microHover {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ==================== */
+/* ANIMATION CLASSES */
+/* ==================== */
+
+/* Background Gradient Animation */
+.app-container {
+    background: linear-gradient(135deg, 
+        rgba(64, 156, 255, 0.03) 0%, 
+        rgba(100, 200, 255, 0.01) 25%, 
+        rgba(64, 156, 255, 0.03) 50%, 
+        rgba(100, 200, 255, 0.01) 75%, 
+        rgba(64, 156, 255, 0.03) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+}
+
+/* 1. Hero Card Slide-In */
+.welcome-card.animate-hero {
+    animation: heroCardSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 1;
+}
+
+/* 2. Staggered Card Cascade */
+.nav-card.animate-cascade,
+.stat-card.animate-cascade,
+.action-btn.animate-cascade,
+.alltimebest-card.animate-cascade {
+    animation: cardCascade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 1;
+}
+
+/* Stagger delays for cascade effect */
+.nav-card.animate-cascade:nth-child(1) { animation-delay: 0.2s; }
+.nav-card.animate-cascade:nth-child(2) { animation-delay: 0.3s; }
+.nav-card.animate-cascade:nth-child(3) { animation-delay: 0.4s; }
+
+.stat-card.animate-cascade:nth-child(1) { animation-delay: 0.3s; }
+.stat-card.animate-cascade:nth-child(2) { animation-delay: 0.4s; }
+.stat-card.animate-cascade:nth-child(3) { animation-delay: 0.5s; }
+
+.action-btn.animate-cascade:nth-child(1) { animation-delay: 0.4s; }
+.action-btn.animate-cascade:nth-child(2) { animation-delay: 0.5s; }
+.action-btn.animate-cascade:nth-child(3) { animation-delay: 0.6s; }
+
+.alltimebest-card.animate-cascade { animation-delay: 0.7s; }
+
+/* 3. Subtle Icon Float */
+.logo i,
+.user-avatar i,
+.nav-icon i,
+.stat-icon i,
+.alltimebest-icon i,
+.action-btn i {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+/* Stagger icon float animations */
+.logo i { animation-delay: 0.5s; }
+.user-avatar i { animation-delay: 0.7s; }
+.nav-card:nth-child(1) i { animation-delay: 1s; }
+.nav-card:nth-child(2) i { animation-delay: 1.2s; }
+.nav-card:nth-child(3) i { animation-delay: 1.4s; }
+.stat-card:nth-child(1) i { animation-delay: 1.6s; }
+.stat-card:nth-child(2) i { animation-delay: 1.8s; }
+.stat-card:nth-child(3) i { animation-delay: 2s; }
+.action-btn:nth-child(1) i { animation-delay: 2.2s; }
+.action-btn:nth-child(2) i { animation-delay: 2.4s; }
+.action-btn:nth-child(3) i { animation-delay: 2.6s; }
+.alltimebest-icon i { animation-delay: 2.8s; }
+
+/* 5. Micro-Interaction Hovers */
+.nav-card:hover,
+.stat-card:hover,
+.action-btn:hover,
+.alltimebest-card:hover {
+    animation: microHover 0.3s ease forwards;
+}
+
+/* Ensure elements stay visible (NO FADE OUT) */
+.nav-card,
+.stat-card,
+.action-btn,
+.alltimebest-card,
+.welcome-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Prevent any fade-out transitions */
+.welcome-card,
+.nav-card,
+.stat-card,
+.action-btn,
+.alltimebest-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Section titles enter with cards */
+.section-title {
+    animation: cardCascade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 1;
+}
+
+.section-title:nth-child(1) { animation-delay: 0.1s; }
+.section-title:nth-child(2) { animation-delay: 0.2s; }
+.section-title:nth-child(3) { animation-delay: 0.3s; }
+.section-title:nth-child(4) { animation-delay: 0.4s; }
+
+/* Activity section */
+.activity-list.animate-cascade {
+    animation: cardCascade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+    opacity: 1;
+}
+
+/* Today's workout status */
+.today-workout-status.animate-cascade {
+    animation: cardCascade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+    opacity: 1;
+}

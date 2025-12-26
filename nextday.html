@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Day Planner - FitTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nextday.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <a href="index.html" class="back-btn">← Back</a>
+            <div class="header-content">
+                <h1>Daily Planner</h1>
+                <div class="user-greeting">
+                    <strong id="userNameDisplay">Ready for your fitness journey!</strong>
+                    <span>Plan ahead and stay consistent with your workouts</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Current Day Display -->
+        <div class="current-day-section">
+            <div class="day-display">
+                <h3 id="currentDayName">Today is Monday</h3>
+            </div>
+        </div>
+
+        <!-- Day Navigation -->
+        <div class="day-navigation">
+            <button class="nav-btn prev-day" id="prevDayBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="day-info">
+                <h2 id="displayDayName">Tuesday</h2>
+                <span id="displayDate">Tomorrow</span>
+            </div>
+            
+            <button class="nav-btn next-day" id="nextDayBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Reset Button -->
+        <div class="reset-section">
+            <button class="reset-btn" id="resetDayBtn">
+                <i class="fas fa-sync-alt"></i>
+                Reset to Tomorrow
+            </button>
+        </div>
+
+        <!-- Plan Display -->
+        <div id="nextPlanInfo" class="plan-info">
+            <!-- Next day's plan will be displayed here -->
+        </div>
+
+        <div id="noPlan" class="no-plan">
+            <div class="no-plan-icon">
+                <i class="fas fa-bed"></i>
+            </div>
+            <h3>Rest Day Ahead!</h3>
+            <p>No workout planned for this day. Perfect time for recovery! 💪</p>
+            <p>You can create new plans in the <a href="plans.html">Workout Plans</a> section.</p>
+        </div>
+
+        <!-- Useful Tips Section -->
+        <div class="tips-section">
+            <h3>💡 Preparation Tips</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Plan Your Time</h4>
+                    <p>Schedule your workout when you have the most energy</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-utensils"></i>
+                    <h4>Fuel Up</h4>
+                    <p>Eat a light snack 30-60 minutes before your workout</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-water"></i>
+                    <h4>Stay Hydrated</h4>
+                    <p>Drink water throughout the day for better performance</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h4>Gear Ready</h4>
+                    <p>Prepare your workout clothes and equipment in advance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="theme.js"></script>
+    <script src="nextday.js"></script>
+</body>
+</html>

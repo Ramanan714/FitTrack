@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plans - FitTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="plans.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Plans Display -->
+        <div id="mainPlansView">
+            <header class="app-header">
+                <a href="index.html" class="back-btn">← Back</a>
+                <div class="header-content">
+                    <h1>My Workout Plan</h1>
+                    <h2 class="plan-subtitle">7-Days Muscle Building Plan</h2>
+                </div>
+            </header>
+
+            <main class="plans-main-content">
+                <!-- Stats Row - Now Vertical -->
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Duration</div>
+                            <div class="stat-value">1 week</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Schedule</div>
+                            <div class="stat-value">5 workout days + 2 rest days</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Session Time</div>
+                            <div class="stat-value">30–35 mins</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Focus</div>
+                            <div class="stat-value">Full Body</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goal Box -->
+                <div class="goal-box">
+                    <h3>Plan Overview</h3>
+                    <div class="goal-content">
+                        <div class="goal-item">
+                            <span class="goal-label">Goal:</span>
+                            <span class="goal-value">Gain muscles & strength</span>
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-label">Focus Areas:</span>
+                            <span class="goal-value">Arms, Shoulders, Chest, Legs, Glutes, Abs, Core, Back, Full Body</span>
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-label">Routine:</span>
+                            <span class="goal-value">5 workout days + 2 rest/stretch days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit/Modify Button -->
+                <div class="action-section">
+                    <button id="editPlanBtn" class="edit-plan-btn">
+                        <i class="fas fa-plus"></i> Add Plan
+                    </button>
+                </div>
+
+                <!-- Days Navigation -->
+                <div class="days-navigation">
+                    <button class="day-btn" data-day="Monday">Mon</button>
+                    <button class="day-btn" data-day="Tuesday">Tue</button>
+                    <button class="day-btn" data-day="Wednesday">Wed</button>
+                    <button class="day-btn" data-day="Thursday">Thu</button>
+                    <button class="day-btn" data-day="Friday">Fri</button>
+                    <button class="day-btn" data-day="Saturday">Sat</button>
+                    <button class="day-btn" data-day="Sunday">Sun</button>
+                </div>
+
+                <!-- Day Workout Display -->
+                <div id="dayWorkoutDisplay" class="day-workout-display">
+                    <div class="no-workout-message">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h3>No Workout Plans Yet</h3>
+                        <p>Click "Add Plan" to create your first workout plan!</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Create Plan Modal -->
+    <div id="createPlanModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Workout to Day</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="planForm" onsubmit="return false;">
+                    <!-- Day Selection -->
+                    <div class="form-section">
+                        <label class="section-title">Select Day</label>
+                        <div class="day-selection-container">
+                            <div class="day-options">
+                                <label class="day-option">
+                                    <input type="radio" name="selectedDay" value="Monday">
+                                    <div class="day-option-content">
+                                        <span class="day-name">Monday</span>
+                                        <span class="day-focus">Arms + Shoulders + Chest</span>
+                                    </div>
+                                </label>
+                                <label class="day-option">
+                                    <input type="radio" name="selectedDay" value="Tuesday">
+                                    <div class="day-option-content">
+                                        <span class="day-name">Tuesday</span>
+                                        <span class="day-focus">Legs + Glutes</span>
+                                    </div>
+                                </label>
+                                <label class="day-option">
+                                    <input type="radio" name="selectedDay" value="Wednesday">
+                                    <div class="day-option-content">
+                                        <span class="day-name">Wednesday</span>
+                                        <span class="day-focus">Rest</span>
+                                    </div>
+                                </label>
+                                <label class="day-option">
+                                    <input type="radio" name="selectedDay" value="Thursday">
+                                    <div class="day-option-content">
+                                        <span class="day-name">Thursday</span>
+                                        <span class="day-focus">Abs + Core</span>
+                                    </div>
+                                </label>
+                                <label class="day-option">
+                                    <input type="radio" name="selectedDay" value="Friday">
+                                    <div class="day-option-content">
+                                        <span class="day-name">Friday</span>
+                                        <span class="day-focus">Back + Arms + Chest</span>
+                                    </div>
+                                </label>
+                                <label class="day-option">
+                                    <input type="radio" name="selectedDay" value="Saturday">
+                                    <div class="day-option-content">
+                                        <span class="day-name">Saturday</span>
+                                        <span class="day-focus">Full Body</span>
+                                    </div>
+                                </label>
+                                <label class="day-option">
+                                    <input type="radio" name="selectedDay" value="Sunday">
+                                    <div class="day-option-content">
+                                        <span class="day-name">Sunday</span>
+                                        <span class="day-focus">Rest</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Existing Workouts for Selected Day -->
+                    <div id="existingWorkoutsSection" class="form-section hidden">
+                        <h3 class="section-title">Existing Workouts</h3>
+                        <div id="existingWorkoutsList" class="existing-workouts-list">
+                            <!-- Existing workouts will be shown here -->
+                        </div>
+                    </div>
+
+                    <!-- Add New Workout Section -->
+                    <!-- Add New Workout Section -->
+<div id="addWorkoutSection" class="form-section hidden">
+    <h3 class="section-title">Add Workouts</h3>
+    
+    <!-- Container for multiple workout forms -->
+    <div id="workoutFormsContainer">
+        <!-- First form will be here -->
+    </div>
+    
+    <div class="workout-actions">
+        <button type="button" id="saveAllWorkoutsBtn" class="btn btn-primary">
+            <i class="fas fa-save"></i> Save All Workouts
+        </button>
+        <button type="button" id="addNewWorkoutBtn" class="btn btn-secondary">
+            <i class="fas fa-plus"></i> Add Another Workout
+        </button>
+    </div>
+</div>
+
+                    <!-- No Workout Message for Rest Days -->
+                    <div id="restDayMessage" class="form-section hidden">
+                        <div class="rest-day-info">
+                            <i class="fas fa-bed"></i>
+                            <h3>Rest Day</h3>
+                            <p>This is a rest day. No workouts needed - your body needs recovery!</p>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="resetForm" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                        <button type="button" id="closeForm" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="storage.js"></script>
+    <script src="theme.js"></script>
+    <script src="plans.js"></script>
+</body>
+</html>

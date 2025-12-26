@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - FitTrack</title>
+    <!-- Add these to your profile.html head section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <!-- Add Cropper.js script here -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <a href="index.html" class="back-btn">← Back</a>
+            <div class="header-content">
+                <h1>My Profile</h1>
+                <p class="profile-subtitle">Track your fitness journey</p>
+            </div>
+        </header>
+
+        <main class="profile-main-content">
+            <!-- Profile Header Section -->
+<div class="profile-header-section">
+     <!-- Profile Display -->
+    <div class="profile-display-card">
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <img id="profileAvatar" src="" alt="Profile" class="profile-image" style="display: none;">
+                <div class="profile-image-fallback">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button class="edit-image-btn" id="editAvatarBtn">
+                    <i class="fas fa-camera"></i>
+                </button>
+                <input type="file" id="avatarInput" accept="image/*" style="display:none;">
+            </div>
+
+            <div class="profile-info">
+                <h3 id="profileName">Your Name</h3>
+                <p class="profile-tagline" id="profileTagline"></p>
+            </div>
+            
+            <button class="profile-edit-btn" id="editProfileBtn">
+                <i class="fas fa-edit"></i>
+            </button>
+        </div>
+    </div>
+</div>
+    <!-- Date, Time and Day Section -->
+    <div class="datetime-section">
+        <div class="day-display" id="currentDay">Monday</div>
+        <div class="datetime-display">
+            <div class="date-display" id="currentDate">DD/MM/YYYY</div>
+            <div class="time-display" id="currentTime">HH:MM AM/PM</div>
+        </div>
+    </div>
+    <br>
+    <!-- Workout Status Message -->
+    <div class="workout-status-box">
+        <div class="status-message" id="workoutStatusMessage">
+            <i class="fas fa-sync fa-spin"></i>
+            Loading workout status...
+        </div>
+    </div>
+    
+   <br>
+
+            <!-- Quick Stats Section -->
+<div class="quick-stats-section">
+    <h2 class="section-title">
+        <i class="fas fa-chart-line"></i>
+        Quick Stats
+    </h2>
+    <div class="stats-grid">
+        <!-- Live Streak -->
+        <div class="stat-card" id="streakBox">
+            <div class="stat-icon">
+                <i class="fas fa-fire"></i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-title">Live Streak</div>
+                <div class="stat-value" id="streakValue">0 days</div>
+            </div>
+        </div>
+        
+        <!-- Total Workouts -->
+        <div class="stat-card" id="workoutsBox">
+            <div class="stat-icon">
+                <i class="fas fa-dumbbell"></i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-title">Total Workouts</div>
+                <div class="stat-value" id="totalWorkoutsValue">0</div>
+            </div>
+        </div>
+        
+        <!-- Workouts Saved -->
+        <div class="stat-card" id="savedBox">
+            <div class="stat-icon">
+                <i class="fas fa-save"></i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-title">Workouts Saved</div>
+                <div class="stat-value" id="savedWorkoutsValue">0</div>
+            </div>
+        </div>
+        
+        <!-- Today's Plan -->
+        <div class="stat-card" id="planBox">
+            <div class="stat-icon">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-title">Today's Plan</div>
+                <div class="stat-value" id="planValue">Rest Day</div>
+            </div>
+        </div>
+        
+        <!-- Records (Double Width) -->
+        <div class="stat-card double-width" id="recordsBox">
+            <div class="stat-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-title">Personal Records</div>
+                <div class="stat-value" id="recordsValue">0 records</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Quick Actions Section -->
+<div class="quick-actions-section">
+    <h2 class="section-title">
+        <i class="fas fa-bolt"></i>
+        Quick Actions
+    </h2>
+    <div class="actions-grid">
+        <a href="workout.html" class="action-card">
+            <div class="action-icon">
+                <i class="fas fa-play-circle"></i>
+            </div>
+            <div class="action-text">Start Workout</div>
+        </a>
+        
+        <a href="progress.html" class="action-card">
+            <div class="action-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="action-text">View Progress</div>
+        </a>
+        
+        <a href="plans.html" class="action-card">
+            <div class="action-icon">
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="action-text">Workout Plans</div>
+        </a>
+        
+        <a href="nextday.html" class="action-card">
+            <div class="action-icon">
+                <i class="fas fa-calendar-day"></i>
+            </div>
+            <div class="action-text">Next Day</div>
+        </a>
+        
+        <!-- All-Time Best (Double Width - FIXED) -->
+        <a href="alltimebest.html" class="action-card double-width">
+            <div class="action-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="action-text">All-Time Best</div>
+        </a>
+    </div>
+</div>
+
+            <!-- Footer Message -->
+            <div class="profile-footer">
+                <div class="footer-content">
+                    <i class="fas fa-heart"></i>
+                    <p>Keep pushing forward! Every workout brings you closer to your goals.</p>
+                    <small>FitTrack • Your Personal Fitness Companion</small>
+                </div>
+            </div>
+        </main>
+    </div>
+
+        <!-- Profile Editor Modal -->
+<div id="profileEditorModal" class="modal premium-modal-overlay">
+    <div class="modal-content premium-modal">
+        <div class="modal-header premium-header">
+            <div class="header-content">
+                <i class="fas fa-user-edit header-icon"></i>
+                <h2>Edit Your Profile</h2>
+                <p class="header-subtitle">Personalize your fitness journey</p>
+            </div>
+            <button class="close-btn premium-close" id="closeEditorModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="modal-body premium-body">
+            <div class="premium-form-container">
+                <!-- Profile Image Section -->
+                <div class="form-section premium-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-portrait"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Profile Picture</h3>
+                            <p>Click camera icon to upload image</p>
+                        </div>
+                    </div>
+                    
+                    <div class="image-section">
+                        <div class="single-image-container">
+                            <div class="profile-image-wrapper" id="profileImageWrapper">
+    <img id="currentProfileImage" src="" alt="Current Profile" class="profile-image-preview">
+    <div class="no-image-placeholder">
+        <i class="fas fa-user-circle"></i>
+        <span>No image</span>
+    </div>
+    <button class="camera-icon-btn" id="cameraIconBtn">
+        <i class="fas fa-camera"></i>
+    </button>
+    <input type="file" id="imageUploadInput" accept="image/*" style="display:none;">
+</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Details Section -->
+                <div class="form-section premium-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <div class="section-title">
+                            <h3>Profile Details</h3>
+                            <p>Tell us about yourself</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-fields">
+                        <!-- Name Field -->
+                        <div class="form-group premium-group">
+                            <label class="input-label">
+                                <i class="fas fa-signature"></i>
+                                Your Name
+                                <span class="required-star">*</span>
+                            </label>
+                            <div class="input-container">
+                                <input type="text" id="editUserName" class="premium-input" 
+                                       placeholder="Enter your full name" required>
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="input-hint">This name will appear across the app</div>
+                        </div>
+
+                        <!-- Fitness Goal Field -->
+                        <div class="form-group premium-group">
+                            <label class="input-label">
+                                <i class="fas fa-bullseye"></i>
+                                Fitness Goal
+                                <span class="optional-badge">Optional</span>
+                            </label>
+                            <div class="input-container">
+                                <input type="text" id="editUserGoal" class="premium-input" 
+                                       placeholder="e.g., Build Muscle, Lose Weight, Get Stronger">
+                                <div class="input-icon">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                            </div>
+                            <div class="input-hint">What's your primary fitness objective?</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions premium-actions">
+                    <div class="action-buttons">
+                        <button type="button" id="closeProfileEditor" class="btn-premium btn-secondary">
+                            <i class="fas fa-times"></i>
+                            <span>Close</span>
+                        </button>
+                        
+                        <button type="button" id="resetProfileForm" class="btn-premium btn-warning">
+                            <i class="fas fa-redo"></i>
+                            <span>Reset</span>
+                        </button>
+                        
+                        <button type="button" id="saveProfileBtn" class="btn-premium btn-primary">
+                            <i class="fas fa-save"></i>
+                            <span>Save Profile</span>
+                        </button>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <div class="footer-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="footer-text">
+                            <span>Your data is securely stored locally</span>
+                            <small>No data is sent to any server</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Crop Modal -->
+ 
+<div id="imageCropModal" class="modal premium-modal-overlay">
+    <div class="modal-content premium-modal">
+        <div class="modal-header premium-header">
+            <div class="header-content">
+                <i class="fas fa-crop-alt header-icon"></i>
+                <h2>Crop Your Image</h2>
+                <p class="header-subtitle">Adjust the crop area as needed</p>
+            </div>
+            <button class="close-btn premium-close" id="closeCropModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="modal-body premium-body">
+            <div class="crop-container">
+                <div id="cropperContainer"></div>
+                <div class="crop-instructions">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Drag to adjust, scroll to zoom. Image will be cropped to circle.</span>
+                </div>
+                
+                <div class="crop-actions">
+                    <button type="button" id="closeCropBtn" class="btn-premium btn-secondary">
+                        <i class="fas fa-times"></i>
+                        <span>Close</span>
+                    </button>
+                    
+                    <button type="button" id="applyCropBtn" class="btn-premium btn-primary">
+                        <i class="fas fa-check"></i>
+                        <span>Apply Crop</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confetti Container -->
+<div id="confettiContainer"></div>
+
+    <!-- Stats Detail Modals -->
+    <div id="streakModal" class="modal stats-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-fire"></i> Current Streak</h2>
+                <button class="close-btn close-stats-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="stats-detail">
+                    <div class="detail-value" id="streakDetailValue">0</div>
+                    <div class="detail-label">days in a row!</div>
+                    <p class="detail-message">Keep the momentum going! Consistency is key to success.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="workoutsModal" class="modal stats-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-dumbbell"></i> Total Workouts</h2>
+                <button class="close-btn close-stats-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="stats-detail">
+                    <div class="detail-value" id="workoutsDetailValue">0</div>
+                    <div class="detail-label">workouts completed</div>
+                    <p class="detail-message">Every workout counts! You're building a stronger you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="savedModal" class="modal stats-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-save"></i> Saved Workouts</h2>
+                <button class="close-btn close-stats-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="workouts-list" id="savedWorkoutsList">
+                    <!-- Workouts will be listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="planModal" class="modal stats-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-calendar-check"></i> Today's Plan</h2>
+                <button class="close-btn close-stats-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="todaysPlanDetail">
+                    <!-- Today's plan will be shown here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="recordsModal" class="modal stats-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-trophy"></i> Personal Records</h2>
+                <button class="close-btn close-stats-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="records-list" id="recordsDetailList">
+                    <!-- Records will be listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden elements for image cropping -->
+    <canvas id="imageCanvas" style="display: none;"></canvas>
+
+    <script src="storage.js"></script>
+    <script src="theme.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>
