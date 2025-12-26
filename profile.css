@@ -2145,3 +2145,387 @@
         text-shadow: 0 0 30px rgba(255, 107, 53, 1);
     }
 }
+/* Today's Plan modal styles */
+.saved-exercises-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--surface-color);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+}
+
+.saved-exercises-section h4 {
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.exercises-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.exercise-item i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.exercise-info {
+    flex: 1;
+}
+
+.exercise-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.exercise-details {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.note {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.no-exercises-message {
+    text-align: center;
+    padding: 20px;
+    background: var(--surface-color);
+    border-radius: 12px;
+    border: 2px dashed var(--border-color);
+    margin: 15px 0;
+}
+
+.no-exercises-message i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.workout-tips {
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--primary-light), var(--surface-color));
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.workout-tips h4 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.workout-tips ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.workout-tips li {
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+/* Premium Today's Plan Modal Styles */
+.plan-detail {
+    text-align: center;
+    padding: 20px;
+}
+
+.detail-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.detail-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--primary-color), #667eea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.detail-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.detail-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: var(--surface-color);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Rest day premium styling */
+.rest-day-detail {
+    text-align: center;
+    padding: 20px;
+}
+
+.rest-day-detail .detail-title {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rest-day-detail .detail-subtitle {
+    color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+/* Premium saved exercises section */
+.saved-exercises-section {
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(255, 255, 255, 0.1));
+    border-radius: 16px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.1);
+}
+
+.saved-exercises-section h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.saved-exercises-section h4 i {
+    color: var(--primary-color);
+    background: rgba(102, 126, 234, 0.1);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.exercises-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--surface-color);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.exercise-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.exercise-item:hover::before {
+    left: 100%;
+}
+
+.exercise-item:hover {
+    border-color: var(--primary-color);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.exercise-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.exercise-info {
+    flex: 1;
+    text-align: left;
+}
+
+.exercise-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.exercise-details {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Premium workout tips */
+.workout-tips {
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.05), rgba(255, 255, 255, 0.1));
+    border-radius: 16px;
+    border: 2px solid rgba(40, 167, 69, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.workout-tips h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.workout-tips h4 i {
+    color: #28a745;
+    background: rgba(40, 167, 69, 0.1);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.workout-tips ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.workout-tips li {
+    color: var(--text-secondary);
+    padding: 10px 15px;
+    background: var(--surface-color);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.workout-tips li::before {
+    content: '✓';
+    color: #28a745;
+    font-weight: bold;
+}
+
+.workout-tips li:hover {
+    background: rgba(40, 167, 69, 0.05);
+    transform: translateY(-2px);
+}
+
+/* No exercises premium message */
+.no-exercises-message {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.05), rgba(255, 255, 255, 0.1));
+    border-radius: 16px;
+    border: 2px dashed rgba(255, 193, 7, 0.3);
+    margin: 20px 0;
+}
+
+.no-exercises-message i {
+    font-size: 3rem;
+    color: #ffc107;
+    margin-bottom: 15px;
+    animation: pulse 2s infinite;
+}
+
+.no-exercises-message p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Note styling */
+.note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    background: rgba(255, 193, 7, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .detail-title {
+        font-size: 1.5rem;
+    }
+    
+    .detail-subtitle {
+        font-size: 1rem;
+    }
+    
+    .workout-tips ul {
+        grid-template-columns: 1fr;
+    }
+}
