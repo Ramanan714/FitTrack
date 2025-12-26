@@ -305,54 +305,116 @@ class ProfileManager {
         });
     }
 
-    displayTodaysPlan(plans, dayName) {
-        const container = document.getElementById('todaysPlanDetail');
-        if (!container) return;
-        
-        const planMapping = {
-            'Monday': 'Arms + Shoulders + Chest',
-            'Tuesday': 'Legs + Glutes', 
-            'Wednesday': 'Rest',
-            'Thursday': 'Abs + Core',
-            'Friday': 'Back + Arms + Chest',
-            'Saturday': 'Full Body',
-            'Sunday': 'Rest'
-        };
-        
-        const focus = planMapping[dayName];
-        
-        container.innerHTML = '';
-        
-        if (focus === 'Rest') {
-            container.innerHTML = `
-                <div class="rest-day-detail">
-                    <div class="detail-icon">🛌</div>
-                    <div class="detail-title">Rest Day</div>
-                    <div class="detail-subtitle">${dayName}</div>
-                    <p class="detail-description">Enjoy your recovery! Your body grows stronger when you rest.</p>
-                </div>
-            `;
-        } else {
-            container.innerHTML = `
-                <div class="plan-detail">
-                    <div class="detail-icon">🏋️‍♂️</div>
-                    <div class="detail-title">${focus}</div>
-                    <div class="detail-subtitle">${dayName} Workout</div>
-                    <p class="detail-description">Focus on ${focus.toLowerCase()} today. Push yourself and stay hydrated!</p>
-                    
-                    <div class="workout-tips">
-                        <h4><i class="fas fa-tips"></i> Pro Tips:</h4>
-                        <ul>
-                            <li>Warm up for 5-10 minutes</li>
-                            <li>Maintain proper form</li>
-                            <li>Rest 60-90 seconds between sets</li>
-                            <li>Cool down with stretching</li>
-                        </ul>
+    displayTodaysPlan() {
+    const container = document.getElementById('todaysPlanDetail');
+    if (!container) return;
+    
+    const today = new Date();
+    const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+    
+    // Get today's exercises from saved plans
+    const todayExercises = this.getExercisesForDay(dayName);
+    
+    const planMapping = {
+        'Monday': 'Arms + Shoulders + Chest',
+        'Tuesday': 'Legs + Glutes', 
+        'Wednesday': 'Rest',
+        'Thursday': 'Abs + Core',
+        'Friday': 'Back + Arms + Chest',
+        'Saturday': 'Full Body',
+        'Sunday': 'Rest'
+    };
+    
+    const focus = planMapping[dayName];
+    
+    container.innerHTML = '';
+    
+    if (focus === 'Rest') {
+        container.innerHTML = `
+            <div class="rest-day-detail">
+                <div class="detail-icon">🛌</div>
+                <div class="detail-title">Rest Day</div>
+                <div class="detail-subtitle">${dayName}</div>
+                <p class="detail-description">Enjoy your recovery! Your body grows stronger when you rest.</p>
+                
+                ${todayExercises.length > 0 ? `
+                    <div class="saved-exercises-section">
+                        <h4><i class="fas fa-dumbbell"></i> Optional Exercises (Saved):</h4>
+                        <div class="exercises-list">
+                            ${todayExercises.map(ex => `
+                                <div class="exercise-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <div class="exercise-info">
+                                        <div class="exercise-name">${ex.name}</div>
+                                        <div class="exercise-details">${ex.sets} sets × ${ex.target} ${ex.type === 'time' ? 'seconds' : 'reps'}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <p class="note">Note: You can still do light exercises on rest days if desired.</p>
                     </div>
+                ` : ''}
+            </div>
+        `;
+    } else {
+        container.innerHTML = `
+            <div class="plan-detail">
+                <div class="detail-icon">🏋️‍♂️</div>
+                <div class="detail-title">${focus}</div>
+                <div class="detail-subtitle">${dayName} Workout</div>
+                <p class="detail-description">Focus on ${focus.toLowerCase()} today. Push yourself and stay hydrated!</p>
+                
+                ${todayExercises.length > 0 ? `
+                    <div class="saved-exercises-section">
+                        <h4><i class="fas fa-list-check"></i> Today's Workout Plan:</h4>
+                        <div class="exercises-list">
+                            ${todayExercises.map(ex => `
+                                <div class="exercise-item">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <div class="exercise-info">
+                                        <div class="exercise-name">${ex.name}</div>
+                                        <div class="exercise-details">${ex.sets} sets × ${ex.target} ${ex.type === 'time' ? 'seconds' : 'reps'}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : `
+                    <div class="no-exercises-message">
+                        <i class="fas fa-clipboard-question"></i>
+                        <p>No exercises saved for ${dayName} yet. Go to Workout Plans to add exercises!</p>
+                    </div>
+                `}
+                
+                <div class="workout-tips">
+                    <h4><i class="fas fa-tips"></i> Pro Tips:</h4>
+                    <ul>
+                        <li>Warm up for 5-10 minutes</li>
+                        <li>Maintain proper form</li>
+                        <li>Rest 60-90 seconds between sets</li>
+                        <li>Cool down with stretching</li>
+                    </ul>
                 </div>
-            `;
-        }
+            </div>
+        `;
     }
+}
+
+// Make sure this method exists (it should from earlier code):
+getExercisesForDay(dayName) {
+    const plans = this.storage.getPlans();
+    if (plans.length === 0) return [];
+    
+    // Find the main plan
+    const mainPlan = plans.find(p => p.name === "7-Days Muscle Building Plan");
+    if (!mainPlan || !mainPlan.days) return [];
+    
+    // Find the day
+    const day = mainPlan.days.find(d => d.name === dayName);
+    if (!day || !day.exercises) return [];
+    
+    return day.exercises;
+}
 
     displayRecords(records) {
         const list = document.getElementById('recordsDetailList');
@@ -480,10 +542,8 @@ class ProfileManager {
                 } else if (id === 'planBox') {
                     const modal = document.getElementById('planModal');
                     if (modal) {
-                        const today = new Date();
-                        const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
-                        this.displayTodaysPlan([], dayName);
-                        modal.classList.add('show');
+                    this.displayTodaysPlan(); // Just call it without parameters
+                     modal.classList.add('show');
                     }
                 } else if (id === 'recordsBox') {
                     const modal = document.getElementById('recordsModal');
