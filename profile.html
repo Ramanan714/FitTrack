@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile - FitTrack</title>
     <!-- Add these to your profile.html head section -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="profile.css">
@@ -317,44 +316,6 @@
     </div>
 </div>
 
-<!-- Image Crop Modal -->
- 
-<div id="imageCropModal" class="modal premium-modal-overlay">
-    <div class="modal-content premium-modal">
-        <div class="modal-header premium-header">
-            <div class="header-content">
-                <i class="fas fa-crop-alt header-icon"></i>
-                <h2>Crop Your Image</h2>
-                <p class="header-subtitle">Adjust the crop area as needed</p>
-            </div>
-            <button class="close-btn premium-close" id="closeCropModal">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="modal-body premium-body">
-            <div class="crop-container">
-                <div id="cropperContainer"></div>
-                <div class="crop-instructions">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Drag to adjust, scroll to zoom. Image will be cropped to circle.</span>
-                </div>
-                
-                <div class="crop-actions">
-                    <button type="button" id="closeCropBtn" class="btn-premium btn-secondary">
-                        <i class="fas fa-times"></i>
-                        <span>Close</span>
-                    </button>
-                    
-                    <button type="button" id="applyCropBtn" class="btn-premium btn-primary">
-                        <i class="fas fa-check"></i>
-                        <span>Apply Crop</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Confetti Container -->
 <div id="confettiContainer"></div>
@@ -434,8 +395,7 @@
         </div>
     </div>
 
-    <!-- Hidden elements for image cropping -->
-    <canvas id="imageCanvas" style="display: none;"></canvas>
+    
 
     <script src="storage.js"></script>
     <script src="theme.js"></script>
